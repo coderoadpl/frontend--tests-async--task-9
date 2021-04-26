@@ -25,3 +25,19 @@ it('should create fixed square', () => {
     expect(square.style.top).toBe('0px')
     expect(square.style.left).toBe('0px')
 })
+
+it('should fall 10px per second', async () => {
+    expect.assertions(2)
+    
+    const square = createSquare()
+
+    startFalling(square)
+
+    expect(square.style.top).toBe('0px')
+    
+    await new Promise((resolve) => setTimeout(resolve, 1200) )
+    
+    expect(square.style.top).toBe('10px')
+})
+
+
